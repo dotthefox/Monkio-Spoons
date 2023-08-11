@@ -194,7 +194,13 @@ def download_pretrained_models():
         ],
         "uvr5_weights": [
             "HP2-人声vocals+非人声instrumentals.pth",
-            "HP5-主旋律人声vocals+其他instrumentals.pth"
+            "HP5-主旋律人声vocals+其他instrumentals.pth",
+            "VR-DeEchoNormal.pth",
+            "VR-DeEchoDeReverb.pth",
+            "VR-DeEchoAggressive.pth",
+            "HP5_only_main_vocal.pth",
+            "HP3_all_vocals.pth",
+            "HP2_all_vocals.pth"
         ]
     }
 
