@@ -24,4 +24,4 @@ class I18nAuto:
         return self.language_map.get(key, key)
 
     def print(self):
-        print("Iniciando en", self.language)
+        #print("Iniciando en", self.language)
