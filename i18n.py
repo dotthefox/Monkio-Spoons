@@ -23,5 +23,5 @@ class I18nAuto:
     def __call__(self, key):
         return self.language_map.get(key, key)
 
-    def print(self):
-        #print("Iniciando en", self.language)
+  # def print(self):
+      # print("Use Language:", self.language)
