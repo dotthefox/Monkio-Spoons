@@ -171,6 +171,7 @@ def run_script():
         run_cmd("git checkout da9f266e2c4ed90cff4e9aa33a3e6ecc337b93a5")
         run_cmd("git checkout a6b36a1d48449e4ab5c96d57a95c623fefbe8c0a")
         run_cmd("git checkout c516e75ff61c3c1939fce97a4fb560a67820a445")
+        run_cmd("git checkout 86867b09b673f85a9fce863b8e96bfcba939f08f")
 
         run_cmd("wget https://github.com/kalomaze/Mangio-Kalo-Tweaks/raw/patch-1/EasierGUI.py")
 
