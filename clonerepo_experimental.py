@@ -115,7 +115,7 @@ def run_script():
 
     def clone_and_copy_repo(repo_path):
         # New repository link
-        new_repo_link = "https://github.com/alexlnkp/Mangio-RVC-Tweaks/"
+        new_repo_link = "https://github.com/IAHispano/Applio-RVC-Fork/"
         # Temporary path to clone the repository
         temp_repo_path = "/content/temp_Mangio-RVC-Fork"
         # New folder name
@@ -125,11 +125,12 @@ def run_script():
         run_cmd(f"git clone {new_repo_link} {temp_repo_path}")
         os.chdir(temp_repo_path)
 
-        run_cmd(f"git checkout pr-optimization")
-        run_cmd("wget https://cdn.discordapp.com/attachments/1125223511191990333/1134555255653285908/EasierGUI.py")
+        run_cmd(f"git checkout 86b7cc77d8b919b0f0228c56efb8a6c33cbef5c7")
+        run_cmd(f"git checkout 3e246977ff8598d6289aeb59642dd4e1d3eff7c5")
+        run_cmd(f"git checkout de4c7741883c41c79075e89a742911aad3f4db18")
 
         # Edit the file here, before copying
-        edit_file(f"{temp_repo_path}/infer-web.py")
+        #edit_file(f"{temp_repo_path}/infer-web.py")
 
         # Copy all files from the cloned repository to the existing path
         copy_all_files_in_directory(temp_repo_path, repo_path)
@@ -190,7 +191,13 @@ def download_pretrained_models():
         ],
         "uvr5_weights": [
             "HP2-人声vocals+非人声instrumentals.pth",
-            "HP5-主旋律人声vocals+其他instrumentals.pth"
+            "HP5-主旋律人声vocals+其他instrumentals.pth",
+            "VR-DeEchoNormal.pth",
+            "VR-DeEchoDeReverb.pth",
+            "VR-DeEchoAggressive.pth",
+            "HP5_only_main_vocal.pth",
+            "HP3_all_vocals.pth",
+            "HP2_all_vocals.pth"
         ]
     }
 
