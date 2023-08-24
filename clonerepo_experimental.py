@@ -125,17 +125,8 @@ def run_script():
         run_cmd(f"git clone {new_repo_link} {temp_repo_path}")
         os.chdir(temp_repo_path)
 
-        run_cmd(f"git checkout 86b7cc77d8b919b0f0228c56efb8a6c33cbef5c7")
-        run_cmd(f"git checkout 3e246977ff8598d6289aeb59642dd4e1d3eff7c5")
-        run_cmd(f"git checkout de4c7741883c41c79075e89a742911aad3f4db18")
-        run_cmd(f"git checkout bda6c2cba04b2a821a9364c50d52559b1c03dbf7")
-        run_cmd(f"git checkout 0f515349f07e9bcc07449bc88dbef4b079046883")
-        run_cmd(f"git checkout 293c5f2c9e9bf08d910090076c692e79b513a0e3")
-        run_cmd(f"git checkout 4b281493ddc4add0fac16b15d2a4619c8d8253b4")
-        run_cmd(f"git checkout 25732bf7802618bbc82d96606ad19c04837848fc")
-        run_cmd(f"git checkout d4d636aa7183df945bb65ef22a2ba33f1a7ee598")
-        run_cmd(f"git checkout 7f86f614352bd2534c562348b932573a882d82b5")
-        run_cmd(f"git checkout ef440d28864b8ee626d006d10096f84fdc983662")
+        run_cmd(f"git checkout 3fa4dad3d8961e5ca2522e9e12c0b4ddb71ad402")
+        run_cmd(f"git checkout f9e606c279cb49420597519b0a83b92be81e42e4")
 
 
         
