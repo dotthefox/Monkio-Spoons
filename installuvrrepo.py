@@ -51,7 +51,12 @@ def first_cell_ran():
             #os.chdir(mounting_path)
             subprocess.run(["git", "clone", "https://github.com/NaJeongMo/Colab-for-MDX_B.git"])
             detele_file = os.path.join(file_folder, "requirements.txt")
-
+            if os.path.exists(detele_file):
+                os.remove(detele_file)
+            detele_file = os.path.join(file_folder, "README.md")
+            if os.path.exists(detele_file):
+                os.remove(detele_file)
+            detele_file = os.path.join(file_folder, ".gitignore")
             if os.path.exists(detele_file):
                 os.remove(detele_file)
     
