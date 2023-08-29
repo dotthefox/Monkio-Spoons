@@ -59,6 +59,9 @@ def first_cell_ran():
             detele_file = os.path.join(file_folder, ".gitignore")
             if os.path.exists(detele_file):
                 os.remove(detele_file)
+            detele_file = os.path.join(file_folder, ".git")
+            if os.path.exists(detele_file):
+                os.remove(detele_file)
     
             for item_name in os.listdir(file_folder):
                 item_path = os.path.join(file_folder, item_name)
