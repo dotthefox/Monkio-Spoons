@@ -7,13 +7,6 @@ import subprocess
 import time
 import logging
 import sys
-from bs4 import BeautifulSoup
-import librosa
-import torch
-import soundfile as sf
-import numpy as np
-import yt_dlp
-import deemix
 import shutil
 now_dir = os.getcwd()
 sys.path.append(now_dir)
