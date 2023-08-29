@@ -9,6 +9,7 @@ import logging
 import sys
 from bs4 import BeautifulSoup
 first_cell_executed = False
+file_folder = "Colab-for-MDX_B"
 def first_cell_ran():
     global first_cell_executed
     if first_cell_executed:
