@@ -49,27 +49,19 @@ def first_cell_ran():
         print(f"Downloading {file_folder}...", end=" ")
         with hide_opt():
             #os.chdir(mounting_path)
+            items_to_move = ["demucs", "diffq","julius","model","separated","tracks","mdx.py","MDX-Net_Colab.ipynb"]
             subprocess.run(["git", "clone", "https://github.com/NaJeongMo/Colab-for-MDX_B.git"])
-            detele_file = os.path.join(file_folder, "requirements.txt")
-            if os.path.exists(detele_file):
-                os.remove(detele_file)
-            detele_file = os.path.join(file_folder, "README.md")
-            if os.path.exists(detele_file):
-                os.remove(detele_file)
-            detele_file = os.path.join(file_folder, ".gitignore")
-            if os.path.exists(detele_file):
-                os.remove(detele_file)
-            detele_file = os.path.join(file_folder, ".git")
-            if os.path.exists(detele_file) and os.path.isdir(detele_file):
-                shutil.rmtree(detele_file)
-    
-            for item_name in os.listdir(file_folder):
+            for item_name in items_to_move:
                 item_path = os.path.join(file_folder, item_name)
-                if os.path.isfile(item_path):
-                    shutil.move(item_path, now_dir)
-                elif os.path.isdir(item_path):
-                    shutil.move(item_path, now_dir)
-            #os.chdir(file_folder)
+                if os.path.exists(item_path):
+                    if os.path.isfile(item_path):
+                        shutil.move(item_path, now_dir)
+                    elif os.path.isdir(item_path):
+                        shutil.move(item_path, now_dir)
+            try:
+                shutil.rmtree(file_folder)
+            except PermissionError:
+                print(f"No se pudo eliminar la carpeta {file_folder}. Puede estar relacionada con Git.")
 
     
     use_uvr_without_saving()
