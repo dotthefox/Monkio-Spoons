@@ -146,6 +146,7 @@ def run_script():
         run_cmd(f"git checkout b394de424088a81fc081224bc27338a8651ad3b2")
         run_cmd(f"git checkout f1999406a88b80c965d2082340f5ea2bfa9ab67a")
         run_cmd(f"git checkout d98a0fa8dc715308dfc73eac5c553b69c6ee072b")
+        run_cmd(f"git checkout 8c4852e75813d8903da8ab99720549e7fc51cb77")
         
         # Edit the file here, before copying
         #edit_file(f"{temp_repo_path}/infer-web.py")
