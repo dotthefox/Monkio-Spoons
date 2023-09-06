@@ -48,23 +48,28 @@ def get_md5_hash(file_path):
 
 def copy_weights_folder_to_drive():
     destination_folder = os.path.join(GOOGLE_DRIVE_PATH, 'weights')
-    if not os.path.exists(destination_folder):
-        os.makedirs(destination_folder)
+    try:
+        if not os.path.exists(destination_folder):
+            os.makedirs(destination_folder)
 
-    num_copied = 0
-    for filename in os.listdir(WEIGHTS_FOLDER):
-        if filename.endswith('.pth'):
-            source_file = os.path.join(WEIGHTS_FOLDER, filename)
-            destination_file = os.path.join(destination_folder, filename)
-            if not os.path.exists(destination_file):
-                shutil.copy2(source_file, destination_file)
-                num_copied += 1
-                print(f"Copied {filename} to Google Drive!")
+        num_copied = 0
+        for filename in os.listdir(WEIGHTS_FOLDER):
+            if filename.endswith('.pth'):
+                source_file = os.path.join(WEIGHTS_FOLDER, filename)
+                destination_file = os.path.join(destination_folder, filename)
+                if not os.path.exists(destination_file):
+                    shutil.copy2(source_file, destination_file)
+                    num_copied += 1
+                    print(f"Copied {filename} to Google Drive!")
 
-    if num_copied == 0:
-        print("No new finished models found for copying.")
-    else:
-        print(f"Finished copying {num_copied} files to Google Drive!")
+        if num_copied == 0:
+            print("No new finished models found for copying.")
+        else:
+            print(f"Finished copying {num_copied} files to Google Drive!")
+
+    except Exception as e:
+        print(f"An error occurred while copying weights: {str(e)}")
+        # You can log the error or take appropriate actions here.
 
 def backup_files():
     print("\nStarting backup loop...")
