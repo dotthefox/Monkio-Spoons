@@ -67,56 +67,69 @@ def copy_weights_folder_to_drive():
         print(f"Finished copying {num_copied} files to Google Drive!")
 
 def backup_files():
-    print("\n Starting backup loop...")
+    print("\nStarting backup loop...")
     last_backup_timestamps_path = os.path.join(LOGS_FOLDER, 'last_backup_timestamps.txt')
     fully_updated = False  # boolean to track if all files are up to date
-    try:
-        with open(last_backup_timestamps_path, 'r') as f:
-            last_backup_timestamps = dict(line.strip().split(':') for line in f)
-    except:
-        last_backup_timestamps = {}
+    
     while True:
-        updated = False # flag to check if any files were updated
-        for root, dirs, files in os.walk(LOGS_FOLDER):
-            for filename in files:
-                if filename != 'last_backup_timestamps.txt':
-                    filepath = os.path.join(root, filename)
-                    if os.path.isfile(filepath):
-                        backup_filepath = os.path.join(GOOGLE_DRIVE_PATH, os.path.relpath(filepath, LOGS_FOLDER))
-                        backup_folderpath = os.path.dirname(backup_filepath)
-                        if not os.path.exists(backup_folderpath):
-                            os.makedirs(backup_folderpath)
-                            print(f'Created backup folder: {backup_folderpath}', flush=True)
-                        # check if file has changed since last backup
-                        last_backup_timestamp = last_backup_timestamps.get(filepath)
-                        current_timestamp = os.path.getmtime(filepath)
-                        if last_backup_timestamp is None or float(last_backup_timestamp) < current_timestamp:
-                            shutil.copy2(filepath, backup_filepath) # copy file with metadata
-                            last_backup_timestamps[filepath] = str(current_timestamp) # update last backup timestamp
-                            if last_backup_timestamp is None:
-                                print(f'Backed up file: {filename}')
-                            else:
-                                print(f'Updating backed up file: {filename}')
-                            updated = True
-                            fully_updated = False  # if a file is updated, all files are not up to date
-        # check if any files were deleted in Colab and delete them from the backup drive
-        for filepath in list(last_backup_timestamps.keys()):
-            if not os.path.exists(filepath):
-                backup_filepath = os.path.join(GOOGLE_DRIVE_PATH, os.path.relpath(filepath, LOGS_FOLDER))
-                if os.path.exists(backup_filepath):
-                    os.remove(backup_filepath)
-                    print(f'Deleted file: {filepath}')
-                del last_backup_timestamps[filepath]
-                updated = True
-                fully_updated = False  # if a file is deleted, all files are not up to date
-        if not updated and not fully_updated:
-            print("Files are up to date.")
-            fully_updated = True  # if all files are up to date, set the boolean to True
-            copy_weights_folder_to_drive()
-            sleep_time = 15
-        else:
-            sleep_time = 0.1
-        with open(last_backup_timestamps_path, 'w') as f:
-            for filepath, timestamp in last_backup_timestamps.items():
-                f.write(f'{filepath}:{timestamp}\n')
-        time.sleep(sleep_time) # wait for 15 seconds before checking again, or 1s if not fully up to date to speed up backups
+        try:
+            updated = False  # flag to check if any files were updated
+            last_backup_timestamps = {}
+
+            try:
+                with open(last_backup_timestamps_path, 'r') as f:
+                    last_backup_timestamps = dict(line.strip().split(':') for line in f)
+            except FileNotFoundError:
+                pass  # File does not exist yet, which is fine
+            
+            for root, dirs, files in os.walk(LOGS_FOLDER):
+                for filename in files:
+                    if filename != 'last_backup_timestamps.txt':
+                        filepath = os.path.join(root, filename)
+                        if os.path.isfile(filepath):
+                            backup_filepath = os.path.join(GOOGLE_DRIVE_PATH, os.path.relpath(filepath, LOGS_FOLDER))
+                            backup_folderpath = os.path.dirname(backup_filepath)
+                            if not os.path.exists(backup_folderpath):
+                                os.makedirs(backup_folderpath)
+                                print(f'Created backup folder: {backup_folderpath}', flush=True)
+                            # check if file has changed since last backup
+                            last_backup_timestamp = last_backup_timestamps.get(filepath)
+                            current_timestamp = os.path.getmtime(filepath)
+                            if last_backup_timestamp is None or float(last_backup_timestamp) < current_timestamp:
+                                shutil.copy2(filepath, backup_filepath)  # copy file with metadata
+                                last_backup_timestamps[filepath] = str(current_timestamp)  # update last backup timestamp
+                                if last_backup_timestamp is None:
+                                    print(f'Backed up file: {filename}')
+                                else:
+                                    print(f'Updating backed up file: {filename}')
+                                updated = True
+                                fully_updated = False  # if a file is updated, all files are not up to date
+            
+            # check if any files were deleted in Colab and delete them from the backup drive
+            for filepath in list(last_backup_timestamps.keys()):
+                if not os.path.exists(filepath):
+                    backup_filepath = os.path.join(GOOGLE_DRIVE_PATH, os.path.relpath(filepath, LOGS_FOLDER))
+                    if os.path.exists(backup_filepath):
+                        os.remove(backup_filepath)
+                        print(f'Deleted file: {filepath}')
+                    del last_backup_timestamps[filepath]
+                    updated = True
+                    fully_updated = False  # if a file is deleted, all files are not up to date
+            
+            if not updated and not fully_updated:
+                print("Files are up to date.")
+                fully_updated = True  # if all files are up to date, set the boolean to True
+                copy_weights_folder_to_drive()
+                sleep_time = 15
+            else:
+                sleep_time = 0.1
+            
+            with open(last_backup_timestamps_path, 'w') as f:
+                for filepath, timestamp in last_backup_timestamps.items():
+                    f.write(f'{filepath}:{timestamp}\n')
+            
+            time.sleep(sleep_time)  # wait for 15 seconds before checking again, or 0.1s if not fully up to date to speed up backups
+        
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+            # You can log the error or take appropriate actions here.
