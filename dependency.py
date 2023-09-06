@@ -12,7 +12,7 @@ def install_packages_but_jank_af():
                     'ffmpeg', 'ffmpeg-python', 'praat-parselmouth', 'pyworld', 'numpy==1.23.5',
                     'numba==0.56.4', 'librosa==0.9.2', 'mega.py', 'gdown', 'onnxruntime', 'pyngrok==4.1.12',
                     'gTTS', 'elevenlabs', 'wget', 'tensorboardX', 'unidecode', 'huggingface-hub', 'stftpitchshift==1.5.1', 
-                    'yt-dlp', 'pedalboard', 'pathvalidate', 'nltk', 'edge-tts', 'git+https://github.com/suno-ai/bark.git']
+                    'yt-dlp', 'pedalboard', 'pathvalidate', 'nltk', 'edge-tts', 'git+https://github.com/suno-ai/bark.git', 'python-dotenv' , 'av']
 
     print("Updating and installing system packages...")
     for package in packages:
@@ -42,7 +42,7 @@ def setup_environment(ForceUpdateDependencies, ForceTemporaryStorage):
                         'ffmpeg', 'ffmpeg-python', 'praat-parselmouth', 'pyworld', 'numpy==1.23.5',
                         'numba==0.56.4', 'librosa==0.9.2', 'mega.py', 'gdown', 'onnxruntime', 'pyngrok==4.1.12',
                         'gTTS', 'elevenlabs', 'wget', 'tensorboardX', 'unidecode', 'huggingface-hub', 'stftpitchshift==1.5.1', 
-                        'yt-dlp', 'pedalboard', 'pathvalidate', 'nltk', 'edge-tts', 'git+https://github.com/suno-ai/bark.git']
+                        'yt-dlp', 'pedalboard', 'pathvalidate', 'nltk', 'edge-tts', 'git+https://github.com/suno-ai/bark.git', 'python-dotenv' , 'av']
 
         print("Updating and installing system packages...")
         for package in packages:
