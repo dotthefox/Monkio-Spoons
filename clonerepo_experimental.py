@@ -222,7 +222,7 @@ def download_pretrained_models():
         ]
     }
 
-    base_url = "https://huggingface.co/IAHispano/applio/"
+    base_url = "https://huggingface.co/IAHispano/applio/resolve/main"
     base_path = "/content/Applio-RVC-Fork/"
 
     # Calculate total number of files to download
