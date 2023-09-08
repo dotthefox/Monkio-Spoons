@@ -8,7 +8,7 @@ from datetime import datetime
 
 def install_packages_but_jank_af():
     packages = ['build-essential', 'python3-dev', 'ffmpeg', 'aria2']
-    pip_packages = ['pip', 'setuptools', 'wheel', 'httpx==0.23.0', 'faiss-gpu', 'fairseq', 'gradio',
+    pip_packages = ['pip', 'setuptools', 'wheel', 'httpx==0.23.0', 'faiss-gpu', 'fairseq', 'gradio==3.34.0',
                     'ffmpeg', 'ffmpeg-python', 'praat-parselmouth', 'pyworld', 'numpy==1.23.5',
                     'numba==0.56.4', 'librosa==0.9.2', 'mega.py', 'gdown', 'onnxruntime', 'pyngrok==4.1.12',
                     'gTTS', 'elevenlabs', 'wget', 'tensorboardX', 'unidecode', 'huggingface-hub', 'stftpitchshift==1.5.1', 
@@ -38,7 +38,7 @@ def setup_environment(ForceUpdateDependencies, ForceTemporaryStorage):
     # Function to install dependencies with progress
     def install_packages():
         packages = ['build-essential', 'python3-dev', 'ffmpeg', 'aria2']
-        pip_packages = ['pip', 'setuptools', 'wheel', 'httpx==0.23.0', 'faiss-gpu', 'fairseq', 'gradio',
+        pip_packages = ['pip', 'setuptools', 'wheel', 'httpx==0.23.0', 'faiss-gpu', 'fairseq', 'gradio==3.34.0',
                         'ffmpeg', 'ffmpeg-python', 'praat-parselmouth', 'pyworld', 'numpy==1.23.5',
                         'numba==0.56.4', 'librosa==0.9.2', 'mega.py', 'gdown', 'onnxruntime', 'pyngrok==4.1.12',
                         'gTTS', 'elevenlabs', 'wget', 'tensorboardX', 'unidecode', 'huggingface-hub', 'stftpitchshift==1.5.1', 
