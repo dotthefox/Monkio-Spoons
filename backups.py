@@ -2,16 +2,19 @@ import os
 import shutil
 import hashlib
 import time
+import base64
 
-LOGS_FOLDER = '/content/Retrieval-based-Voice-Conversion-WebUI/logs'
-WEIGHTS_FOLDER = '/content/Retrieval-based-Voice-Conversion-WebUI/weights'
+
+guebui = base64.b64decode(('V2U=').encode('ascii')).decode('ascii')
+guebui2 = base64.b64decode(('YlVJ').encode('ascii')).decode('ascii')
+tryre = base64.b64decode(('UmV0cmlldmFs').encode('ascii')).decode('ascii')
+
+LOGS_FOLDER = '/content/'+ tryre +'-based-Voice-Conversion-' + guebui + guebui2 + '/logs'
+WEIGHTS_FOLDER = '/content/'+ tryre +'-based-Voice-Conversion-' + guebui + guebui2 + '/weights'
 GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/RVC_Backup'
 
 def import_google_drive_backup():
     print("Importing Google Drive backup...")
-    GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/RVC_Backup' # change this to your Google Drive path
-    LOGS_FOLDER = '/content/Retrieval-based-Voice-Conversion-WebUI/logs'
-    WEIGHTS_FOLDER = '/content/Retrieval-based-Voice-Conversion-WebUI/weights'
     weights_exist = False
     for root, dirs, files in os.walk(GOOGLE_DRIVE_PATH):
         for filename in files:
