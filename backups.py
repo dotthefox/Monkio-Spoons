@@ -104,19 +104,15 @@ def backup_files():
                             last_backup_timestamp = last_backup_timestamps.get(filepath)
                             current_timestamp = os.path.getmtime(filepath)
                             if last_backup_timestamp is None or float(last_backup_timestamp) < current_timestamp:
-                                try:
-                                    shutil.copy2(filepath, backup_filepath)  # copy file with metadata
-                                except FileNotFoundError:
-                                    # Handle the case where the file is not found during copying
-                                    print(f'File not found: {filepath}')
+                                shutil.copy2(filepath, backup_filepath)  # copy file with metadata
+                                last_backup_timestamps[filepath] = str(current_timestamp)  # update last backup timestamp
+                                if last_backup_timestamp is None:
+                                    print(f'Backed up file: {filename}')
                                 else:
-                                    last_backup_timestamps[filepath] = str(current_timestamp)  # update last backup timestamp
-                                    if last_backup_timestamp is None:
-                                        print(f'Backed up file: {filename}')
-                                    else:
-                                        print(f'Updating backed up file: {filename}')
-                                    updated = True
-                                    fully_updated = False  # if a file is updated, all files are not up to date
+                                    print(f'Updating backed up file: {filename}')
+                                updated = True
+                                fully_updated = False  # if a file is updated, all files are not up to date
+            
             # check if any files were deleted in Colab and delete them from the backup drive
             for filepath in list(last_backup_timestamps.keys()):
                 if not os.path.exists(filepath):
@@ -143,7 +139,5 @@ def backup_files():
             time.sleep(sleep_time)  # wait for 15 seconds before checking again, or 0.1s if not fully up to date to speed up backups
         
         except Exception as e:
-            # Log the exception details for debugging
-            traceback.print_exc()
             print(f"An error occurred: {str(e)}")
             # You can log the error or take appropriate actions here.
