@@ -117,9 +117,9 @@ def run_script():
         # New repository link
         new_repo_link = "https://github.com/IAHispano/Applio-RVC-Fork/"
         # Temporary path to clone the repository
-        temp_repo_path = "/content/temp_Mangio-RVC-Fork"
+        temp_repo_path = "/content/temp_Applio-RVC-Fork"
         # New folder name
-        new_folder_name = "Mangio-RVC-Fork"
+        new_folder_name = "Applio-RVC-Fork"
 
         # Clone the latest code from the new repository to a temporary location
         run_cmd(f"git clone {new_repo_link} {temp_repo_path}")
@@ -222,7 +222,7 @@ def download_pretrained_models():
         ]
     }
 
-    base_url = "https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/"
+    base_url = "https://huggingface.co/IAHispano/Applio/resolve/main/"
     base_path = "/content/Applio-RVC-Fork/"
 
     # Calculate total number of files to download
