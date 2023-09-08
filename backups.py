@@ -5,12 +5,10 @@ import time
 import base64
 
 
-guebui = base64.b64decode(('V2U=').encode('ascii')).decode('ascii')
-guebui2 = base64.b64decode(('YlVJ').encode('ascii')).decode('ascii')
-tryre = base64.b64decode(('UmV0cmlldmFs').encode('ascii')).decode('ascii')
 
-LOGS_FOLDER = '/content/'+ tryre +'-based-Voice-Conversion-' + guebui + guebui2 + '/logs'
-WEIGHTS_FOLDER = '/content/'+ tryre +'-based-Voice-Conversion-' + guebui + guebui2 + '/weights'
+
+LOGS_FOLDER = '/content/Applio-RVC-Fork/logs'
+WEIGHTS_FOLDER = '/content/Applio-RVC-Fork/weights'
 GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/RVC_Backup'
 
 def import_google_drive_backup():
