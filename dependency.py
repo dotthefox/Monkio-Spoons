@@ -20,9 +20,7 @@ def install_packages_but_jank_af():
         subprocess.check_call(['apt-get', 'install', '-qq', '-y', package])
 
     print("Updating and installing pip packages...")
-    for pip_package in pip_packages:
-        print(f"Installing {pip_package}...")        
-        subprocess.check_call(['pip', 'install', '--upgrade'] + pip_packages)
+    subprocess.check_call(['pip', 'install', '--upgrade'] + pip_packages)
 
     print('Packages up to date.')
 
@@ -52,9 +50,7 @@ def setup_environment(ForceUpdateDependencies, ForceTemporaryStorage):
             subprocess.check_call(['apt-get', 'install', '-qq', '-y', package])
 
         print("Updating and installing pip packages...")
-        for pip_package in pip_packages:
-            print(f"Installing {pip_package}...")        
-            subprocess.check_call(['pip', 'install', '--upgrade'] + pip_packages)
+        subprocess.check_call(['pip', 'install', '--upgrade'] + pip_packages)
 
 
         print('Packages up to date.')
