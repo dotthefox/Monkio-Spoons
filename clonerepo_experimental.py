@@ -227,25 +227,6 @@ def download_pretrained_models():
     base_url = "https://huggingface.co/IAHispano/applio_fix/resolve/main"
     base_path = "/content/Applio-RVC-Fork/"
 
-    # Calculate total number of files to download
-    total_files = sum(len(files) for files in pretrained_models.values()) + 1  # +1 for hubert_base.pt
-
-    with tqdm(total=total_files, desc="Downloading files") as pbar:
-        for folder, models in pretrained_models.items():
-            folder_path = os.path.join(base_path, folder)
-            os.makedirs(folder_path, exist_ok=True)
-            for model in models:
-                url = base_url + folder + "/" + model
-                filepath = os.path.join(folder_path, model)
-                download_file(url, filepath)
-                pbar.update()
-
-        # Download hubert_base.pt to the base path
-        hubert_url = base_url + "hubert_base.pt"
-        hubert_filepath = os.path.join(base_path, "hubert_base.pt")
-        download_file(hubert_url, hubert_filepath)
-        pbar.update()
-
 def clone_repository(run_download):
     with ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(run_script)
