@@ -7,8 +7,8 @@ import base64
 
 
 
-LOGS_FOLDER = '/content/Monkio-Spoon/logs'
-WEIGHTS_FOLDER = '/content/Monkio-Spoon/weights'
+LOGS_FOLDER = '/content/Monkio-VCR-Spoon/logs'
+WEIGHTS_FOLDER = '/content/Monkio-VCR-Spoon/weights'
 GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/VCR_Back'
 
 def import_google_drive_backup():
