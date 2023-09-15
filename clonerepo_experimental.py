@@ -115,7 +115,7 @@ def run_script():
 
     def clone_and_copy_repo(repo_path):
         # New repository link
-        new_repo_link = "https://github.com/dotthefox/Monkio-VCR-Spoons/"
+        new_repo_link = "https://github.com/dotthefox/Monkio-Spoons/"
         # Temporary path to clone the repository
         temp_repo_path = "/content/temp_Monkio-VCR-Spoon"
         # New folder name
@@ -223,8 +223,8 @@ def download_pretrained_models():
             "HP2_all_vocals.pth"
         ]
     }
-    part2 = "I"
-    base_url = "https://huggingface.co/lj1995/VoiceConversionWebU" + part2 + "/resolve/main/"
+    part2 = "bUI"
+    base_url = "https://huggingface.co/lj1995/VoiceConversionWe" + part2 + "/resolve/main/"
     base_path = "/content/Monkio-VCR-Spoon/"
     base_pathm = base_path
 
