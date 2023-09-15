@@ -7,9 +7,9 @@ import base64
 
 
 
-LOGS_FOLDER = '/content/Applio-RVC-Fork/logs'
-WEIGHTS_FOLDER = '/content/Applio-RVC-Fork/weights'
-GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/RVC_Backup'
+LOGS_FOLDER = '/content/Monkio-Spoon/logs'
+WEIGHTS_FOLDER = '/content/Monkio-Spoon/weights'
+GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/VCR_Back'
 
 def import_google_drive_backup():
     print("Importing Google Drive backup...")
