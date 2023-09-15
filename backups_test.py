@@ -4,15 +4,15 @@ import shutil
 import hashlib
 import time
 
-LOGS_FOLDER = '/content/Monkio-Spoon/logs'
-WEIGHTS_FOLDER = '/content/Monkio-Spoon/weights'
+LOGS_FOLDER = '/content/Monkio-VCR-Spoon/logs'
+WEIGHTS_FOLDER = '/content/Monkio-VCR-Spoon/weights'
 GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/VCR_Back'
 
 def import_google_drive_backup():
     print("Importing Google Drive backup...")
     GOOGLE_DRIVE_PATH = '/content/drive/MyDrive/VCR_Back'  # change this to your Google Drive path
-    LOGS_FOLDER = '/content/Monkio-Spoon/logs'
-    WEIGHTS_FOLDER = '/content/Monkio-Spoon/weights'
+    LOGS_FOLDER = '/content/Monkio-VCR-Spoon/logs'
+    WEIGHTS_FOLDER = '/content/Monkio-VCR-Spoon/weights'
     weights_exist = False
     files_to_copy = []
     weights_to_copy = []
