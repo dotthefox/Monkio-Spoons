@@ -99,7 +99,7 @@ def run_script():
             print("No changes were needed.")
 
     # Define the repo path
-    repo_path = '/content/Applio-RVC-Fork'
+    repo_path = '/content/Monkio-Spoon'
 
     def copy_all_files_in_directory(src_dir, dest_dir):
         # Iterate over all files in source directory
@@ -115,11 +115,11 @@ def run_script():
 
     def clone_and_copy_repo(repo_path):
         # New repository link
-        new_repo_link = "https://github.com/IAHispano/Applio-RVC-Fork/"
+        new_repo_link = "https://github.com/dotthefox/Monkio-Spoons/"
         # Temporary path to clone the repository
-        temp_repo_path = "/content/temp_Applio-RVC-Fork"
+        temp_repo_path = "/content/temp_Monkio-Spoon"
         # New folder name
-        new_folder_name = "Applio-RVC-Fork"
+        new_folder_name = "Monkio-Spoon"
 
         # Clone the latest code from the new repository to a temporary location
         run_cmd(f"git clone {new_repo_link} {temp_repo_path}")
@@ -170,20 +170,20 @@ def run_script():
     clone_and_copy_repo(repo_path)
 
     # Download the credentials file for RVC archive sheet
-    os.makedirs('/content/Applio-RVC-Fork/stats/', exist_ok=True)
-    run_cmd("wget -q https://cdn.discordapp.com/attachments/945486970883285045/1114717554481569802/peppy-generator-388800-07722f17a188.json -O /content/Applio-RVC-Fork/stats/peppy-generator-388800-07722f17a188.json")
+    os.makedirs('/content/Monkio-Spoon/stats/', exist_ok=True)
+    run_cmd("wget -q https://cdn.discordapp.com/attachments/945486970883285045/1114717554481569802/peppy-generator-388800-07722f17a188.json -O /content/Monkio-Spoon/stats/peppy-generator-388800-07722f17a188.json")
 
     # Forcefully delete any existing torchcrepe dependencies downloaded from an earlier run just in case
-    shutil.rmtree('/content/Applio-RVC-Fork/torchcrepe', ignore_errors=True)
+    shutil.rmtree('/content/Monkio-Spoon/torchcrepe', ignore_errors=True)
     shutil.rmtree('/content/torchcrepe', ignore_errors=True)
 
     # Download the torchcrepe folder from the maxrmorrison/torchcrepe repository
     run_cmd("git clone https://github.com/maxrmorrison/torchcrepe.git")
-    shutil.move('/content/torchcrepe/torchcrepe', '/content/Applio-RVC-Fork/')
+    shutil.move('/content/torchcrepe/torchcrepe', '/content/Monkio-Spoon/')
     shutil.rmtree('/content/torchcrepe', ignore_errors=True)  # Delete the torchcrepe repository folder
 
-    # Change the current directory to /content/Applio-RVC-Fork
-    os.chdir('/content/Applio-RVC-Fork')
+    # Change the current directory to /content/Monkio-Spoon
+    os.chdir('/content/Monkio-Spoon')
     os.makedirs('pretrained', exist_ok=True)
     os.makedirs('uvr5_weights', exist_ok=True)
 
@@ -225,7 +225,7 @@ def download_pretrained_models():
     }
     part2 = "I"
     base_url = "https://huggingface.co/lj1995/VoiceConversionWebU" + part2 + "/resolve/main/"
-    base_path = "/content/Applio-RVC-Fork/"
+    base_path = "/content/Monkio-Spoon/"
     base_pathm = base_path
 
     # Calculate total number of files to download
